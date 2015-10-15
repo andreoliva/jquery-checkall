@@ -2,29 +2,38 @@
   $.fn.checkAll = function(config) {
     var self = this;
     var settings = $.extend({
-      position: 'before',
-      label: 'All',
+      allSelector: null,
+      breakAfter: false,
+      classes: null,
       id: null,
-      classes: null
+      label: 'All',
+      position: 'before'
     }, config);
-    var labelAround = this.parent().is('label');
-    var optionAll = $('<input type="checkbox">');
-    var label = $('<label></label>');
+    var optionAll = $(settings.allSelector);
 
-    optionAll.attr('id', settings.id);
-    optionAll.addClass(settings.classes);
-    if (settings.position == 'before'){
-      labelAround ? this.first().parent().before(optionAll) : this.first().before(optionAll);
-    } else {
-      labelAround ? this.last().parent().after(optionAll) : this.last().after(optionAll);
-    }
+    if (!optionAll.length){
+      var labelAround = this.parent().is('label');
+      var label = $('<label></label>')
+        .text(settings.label);
 
-    if (labelAround){
-      optionAll.replaceWith(label);
-      label.append(optionAll, ' ' + settings.label);
-    } else {
-      label.text(settings.label);
-      optionAll.after(label);
+      optionAll = $('<input type="checkbox">')
+        .attr('id', settings.id)
+        .addClass(settings.classes);
+
+      if (settings.position == 'before'){
+        labelAround ? this.first().parent().before(optionAll) : this.first().before(optionAll);
+      } else {
+        labelAround ? this.last().parent().after(optionAll) : this.last().next().after(optionAll);
+      }
+
+      if (labelAround){
+        optionAll.replaceWith(label);
+        label.prepend(optionAll);
+      } else {
+        optionAll.after(label);
+      }
+
+      if (settings.breakAfter) label.after('<br>');
     }
 
     optionAll
@@ -38,11 +47,6 @@
       return true;
     }
 
-    return this.each(function() {
-      $(this)
-        .change(function(){
-          optionAll.prop('checked', checkIfAllGuysAreChecked());
-        });
-    });
+    return this.change(function(){ optionAll.prop('checked', checkIfAllGuysAreChecked()) });
   };
 }(jQuery));

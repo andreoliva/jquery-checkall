@@ -12,24 +12,45 @@
 		<section id="MAIN">
 			<div>
 				<p>Using labels around the checkboxes:</p>
-				<label><input type="checkbox" class="checkbox-label" value="one" checked> One</label>
-				<label><input type="checkbox" class="checkbox-label" value="two" checked> Two</label>
-				<label><input type="checkbox" class="checkbox-label" value="three" checked> Three</label>
-				<label><input type="checkbox" class="checkbox-label" value="four" checked> Four</label>
+				<label><input type="checkbox" class="checkbox-label-around" value="one" checked> One</label>
+				<label><input type="checkbox" class="checkbox-label-around" value="two" checked> Two</label>
+				<label><input type="checkbox" class="checkbox-label-around" value="three" checked> Three</label>
+				<label><input type="checkbox" class="checkbox-label-around" value="four" checked> Four</label>
 			</div>
-
+			<br>
 			<div>
 				<p>Using labels after the checkboxes:</p>
-				<input type="checkbox" class="checkbox-no-label" value="one"> <label>One</label>
-				<input type="checkbox" class="checkbox-no-label" value="two"> <label>Two</label>
-				<input type="checkbox" class="checkbox-no-label" value="three"> <label>Three</label>
-				<input type="checkbox" class="checkbox-no-label" value="four"> <label>Four</label>
+				<input type="checkbox" class="checkbox-label-after" value="one"> <label>One</label>
+				<input type="checkbox" class="checkbox-label-after" value="two"> <label>Two</label>
+				<input type="checkbox" class="checkbox-label-after" value="three"> <label>Three</label>
+				<input type="checkbox" class="checkbox-label-after" value="four"> <label>Four</label>
+			</div>
+			<br>
+			<div>
+				<p>Using a pre-existent checkbox as the "all" selector:</p>
+				<input type="checkbox" id="existent-all"> <label>I always existed in the HTML!</label><br>
+				<input type="checkbox" class="checkbox-with-all" value="one"> <label>One</label><br>
+				<input type="checkbox" class="checkbox-with-all" value="two"> <label>Two</label><br>
+				<input type="checkbox" class="checkbox-with-all" value="three"> <label>Three</label><br>
+				<input type="checkbox" class="checkbox-with-all" value="four"> <label>Four</label>
 			</div>
 		</section>
 	</body>
 
 	<script type="text/javascript">
-		$('.checkbox-label').checkAll();
-		$('.checkbox-no-label').checkAll();
+		$('.checkbox-label-around').checkAll({
+			breakAfter: true,
+			classes: 'with-class0 with-class1',
+			id: 'with-id',
+			label: 'I have my own ID and a <br>',
+			position: 'before'
+		});
+		$('.checkbox-label-after').checkAll({
+			label: 'CLICK ME!',
+			position: 'after'
+		});
+		$('.checkbox-with-all').checkAll({
+			allSelector: '#existent-all'
+		});
 	</script>
 </html>
