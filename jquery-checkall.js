@@ -20,16 +20,16 @@
         .attr('id', settings.id)
         .addClass(settings.classes);
 
-      if (settings.position == 'before'){
-        labelAround ? this.first().parent().before(optionAll) : this.first().before(optionAll);
-      } else {
-        labelAround ? this.last().parent().after(optionAll) : this.last().next().after(optionAll);
-      }
-
       if (labelAround){
+        (settings.position == 'before') ?
+          this.first().parent().before(optionAll) :
+          this.last().parent().after(optionAll);
         optionAll.replaceWith(label);
         label.prepend(optionAll);
       } else {
+        (settings.position == 'before') ?
+          this.first().before(optionAll) :
+          this.last().next().after(optionAll);
         optionAll.after(label);
       }
 
