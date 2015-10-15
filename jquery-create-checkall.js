@@ -1,5 +1,5 @@
 (function($) {
-  $.fn.checkAll = function(config) {
+  $.fn.createCheckAll = function(config) {
     var self = this;
     var settings = $.extend({
       allSelector: null,

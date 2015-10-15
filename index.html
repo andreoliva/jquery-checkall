@@ -5,7 +5,7 @@
 		<meta charset="utf-8" />
 		<title>jQuery CheckAll</title>
 		<script src='http://code.jquery.com/jquery-2.1.4.min.js'></script>
-		<script src='jquery-checkall.js'></script>
+		<script src='jquery-create-checkall.js'></script>
 	</head>
 
 	<body>
@@ -38,18 +38,18 @@
 	</body>
 
 	<script type="text/javascript">
-		$('.checkbox-label-around').checkAll({
+		$('.checkbox-label-around').createCheckAll({
 			breakAfter: true,
 			classes: 'with-class0 with-class1',
 			id: 'with-id',
 			label: 'I have my own ID and a <br>',
 			position: 'before'
 		});
-		$('.checkbox-label-after').checkAll({
+		$('.checkbox-label-after').createCheckAll({
 			label: 'CLICK ME!',
 			position: 'after'
 		});
-		$('.checkbox-with-all').checkAll({
+		$('.checkbox-with-all').createCheckAll({
 			allSelector: '#existent-all'
 		});
 	</script>
