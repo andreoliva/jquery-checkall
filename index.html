@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<!-- Version: 1.0 -->
+	<head>
+		<meta charset="utf-8" />
+		<title>jQuery CheckAll</title>
+		<script src='http://code.jquery.com/jquery-2.1.4.min.js'></script>
+		<script src='jquery-checkall.js'></script>
+	</head>
+
+	<body>
+		<section id="MAIN">
+			<div>
+				<p>Using labels around the checkboxes:</p>
+				<label><input type="checkbox" class="checkbox-label" value="one" checked> One</label>
+				<label><input type="checkbox" class="checkbox-label" value="two" checked> Two</label>
+				<label><input type="checkbox" class="checkbox-label" value="three" checked> Three</label>
+				<label><input type="checkbox" class="checkbox-label" value="four" checked> Four</label>
+			</div>
+
+			<div>
+				<p>Using labels after the checkboxes:</p>
+				<input type="checkbox" class="checkbox-no-label" value="one"> <label>One</label>
+				<input type="checkbox" class="checkbox-no-label" value="two"> <label>Two</label>
+				<input type="checkbox" class="checkbox-no-label" value="three"> <label>Three</label>
+				<input type="checkbox" class="checkbox-no-label" value="four"> <label>Four</label>
+			</div>
+		</section>
+	</body>
+
+	<script type="text/javascript">
+		$('.checkbox-label').checkAll();
+		$('.checkbox-no-label').checkAll();
+	</script>
+</html>
