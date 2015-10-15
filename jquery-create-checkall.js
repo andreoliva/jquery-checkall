@@ -1,5 +1,5 @@
 (function($) {
-  $.fn.createCheckAll = function(config) {
+  $.fn.createCheckAll = function(options) {
     var self = this;
     var settings = $.extend({
       allSelector: null,
@@ -8,7 +8,7 @@
       id: null,
       label: 'All',
       position: 'before'
-    }, config);
+    }, options);
     var optionAll = $(settings.allSelector);
 
     if (!optionAll.length){
