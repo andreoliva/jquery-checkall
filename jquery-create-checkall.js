@@ -1,6 +1,8 @@
 (function($) {
   $.fn.createCheckAll = function(options) {
-    var self = this;
+    var list = this.filter('input[type=checkbox]');
+    if (!list.length) return this;
+
     var settings = $.extend({
       allSelector: null,
       breakAfter: false,
@@ -9,10 +11,10 @@
       label: 'All',
       position: 'before'
     }, options);
-    var optionAll = $(settings.allSelector);
+    var optionAll = $(settings.allSelector).filter('input[type=checkbox]');
 
     if (!optionAll.length){
-      var labelAround = this.parent().is('label');
+      var labelAround = list.parent().is('label');
       var label = $('<label></label>')
         .text(settings.label);
 
@@ -22,14 +24,14 @@
 
       if (labelAround){
         (settings.position == 'before') ?
-          this.first().parent().before(optionAll) :
-          this.last().parent().after(optionAll);
+          list.first().parent().before(optionAll) :
+          list.last().parent().after(optionAll);
         optionAll.replaceWith(label);
         label.prepend(optionAll);
       } else {
         (settings.position == 'before') ?
-          this.first().before(optionAll) :
-          this.last().next().after(optionAll);
+          list.first().before(optionAll) :
+          list.last().next().after(optionAll);
         optionAll.after(label);
       }
 
@@ -37,16 +39,19 @@
     }
 
     optionAll
-      .change(function(e){ self.prop('checked', e.target.checked) })
+      .change(function(e){ list.prop('checked', e.target.checked) })
       .prop('checked', checkIfAllGuysAreChecked());
 
+    list
+      .change(function(){ optionAll.prop('checked', checkIfAllGuysAreChecked()) });
+
     function checkIfAllGuysAreChecked(){
-      for (var i = 0; i < self.length; i++){
-        if (!self[i].checked) return false;
+      for (var i = 0; i < list.length; i++){
+        if (!list[i].checked) return false;
       }
       return true;
     }
 
-    return this.change(function(){ optionAll.prop('checked', checkIfAllGuysAreChecked()) });
+    return this;
   };
 }(jQuery));

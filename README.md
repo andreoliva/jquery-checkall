@@ -28,7 +28,7 @@ This will create a new checkbox input an its label using the default options. Th
 - **position**: position of the new element realtive to the list passed to the plugin. String, accepts _"before"_ or _"after"_ and defaults to _"before"_.
 
 There is a special option:
-- **allSelector**: this one permits you to pass the selector of an already existent checkbox element that'll be used as the "select all". This option ignores all of the others. String, defaults to _null_. Usage:
+- **allSelector**: this one permits you to pass the selector of an already existent checkbox element that'll be used as the "select all". If you pass the selector of an element that isn't a checkbox it will create a new one as in the previous example. This option ignores all of the others. String, defaults to _null_.
 ```
 $('.list-of-checkboxes').createCheckAll({
 	allSelector: '#id-of-the-one-i-want-to-use'
