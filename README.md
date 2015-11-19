@@ -20,12 +20,12 @@ Use the plugin as follows:
 ```
 $('.list-of-checkboxes').createCheckAll();
 ```
-This will create a new checkbox input an its label using the default options. They are:
+This will create a new checkbox input and its label using the default options. They are:
 - **breakAfter**: adds a ```<br>``` after the new element. Boolean, defaults to _false_.
 - **classes**: list of classes to be added to the new element. String, defaults to _null_.
 - **id**: id of the new element. String, defaults to _null_.
 - **label**: text for the new element's label. String, defaults to _"All"_.
-- **position**: position of the new element realtive to the list passed to the plugin. String, accepts _"before"_ or _"after"_ and defaults to _"before"_.
+- **position**: position of the new element relative to the list passed to the plugin. String, accepts _"before"_ or _"after"_ and defaults to _"before"_.
 
 There is a special option:
 - **allSelector**: this one permits you to pass the selector of an already existent checkbox element that'll be used as the "select all". If you pass the selector of an element that isn't a checkbox it will create a new one as in the previous example. This option ignores all of the others. String, defaults to _null_.
