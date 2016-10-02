@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<!-- Version: 1.0 -->
+	<head>
+		<meta charset="utf-8" />
+		<title>jQuery CheckAll</title>
+		<script src="http://code.jquery.com/jquery-2.2.4.min.js"
+			integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+			crossorigin="anonymous"></script>
+		<script src='../jquery-create-checkall.min.js'></script>
+	</head>
+
+	<body>
+		<section id="MAIN">
+			<div>
+				<p>Using labels around the checkboxes:</p>
+				<label><input type="checkbox" class="checkbox-label-around" value="one" checked>One</label>
+				<label><input type="checkbox" class="checkbox-label-around" value="two" checked>Two</label>
+				<label><input type="checkbox" class="checkbox-label-around" value="three" checked>Three</label>
+				<label><input type="checkbox" class="checkbox-label-around" value="four" checked>Four</label>
+			</div>
+			<br>
+			<div>
+				<p>Using labels after the checkboxes:</p>
+				<input type="checkbox" id="cb-one" class="checkbox-label-after" value="one"><label for="cb-one">One</label>
+				<input type="checkbox" id="cb-two" class="checkbox-label-after" value="two"><label for="cb-two">Two</label>
+				<input type="checkbox" id="cb-three" class="checkbox-label-after" value="three"><label for="cb-three">Three</label>
+				<input type="checkbox" id="cb-four" class="checkbox-label-after" value="four"><label for="cb-four">Four</label>
+			</div>
+			<br>
+			<div>
+				<p>Using a pre-existent checkbox as the "all" selector:</p>
+				<input type="checkbox" id="existent-all"><label for="existent-all">I always existed in the HTML!</label><br>
+				<input type="checkbox" id="ex-1" class="checkbox-with-all" value="one"><label for="ex-1">One</label><br>
+				<input type="checkbox" id="ex-2" class="checkbox-with-all" value="two"><label for="ex-2">Two</label><br>
+				<input type="checkbox" id="ex-3" class="checkbox-with-all" value="three"><label for="ex-3">Three</label><br>
+				<input type="checkbox" id="ex-4" class="checkbox-with-all" value="four"><label for="ex-4">Four</label>
+			</div>
+		</section>
+	</body>
+
+	<script type="text/javascript">
+		$('.checkbox-label-around').createCheckAll({
+			breakAfter: true,
+			classes: 'with-class0 with-class1',
+			id: 'with-id',
+			label: 'I have my own ID and a <br>',
+			position: 'before'
+		});
+		$('.checkbox-label-after').createCheckAll({
+			label: 'CLICK ME!',
+			position: 'after'
+		});
+		$('.checkbox-with-all').createCheckAll({
+			allSelector: '#existent-all'
+		});
+	</script>
+</html>
